@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+  <div class="lowtimeframe">
+    <h1>RSI divergence screener for all FTX perps</h1>
+    <p>This page is showing if there is any 5 min rsi divs</p>
+  </div>
+  {% for table in tables2 %}
+
+            {{ table|safe }}
+{% endfor %}
+{% endblock %}
+
+

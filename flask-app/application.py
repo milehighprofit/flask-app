@@ -7,25 +7,25 @@ import requests
 import pandas as pd
 import numpy as np
 import matplotlib
-app = Flask(__name__)
+application = Flask(__name__)
 
-@app.route('/')
+@application.route('/')
 def home():
     cols1 = (htf.iloc[-3:] != 0).any()
     websitedata1 = htf.iloc[-3:][cols1[cols1].index]
     return render_template("home.html", tables1 = [websitedata1.to_html(classes='data')])
 
-@app.route('/1hour/')
+@application.route('/1hour/')
 def about():
     cols = (alle.iloc[-3:] != 0).any()
     websitedata = alle.iloc[-3:][cols[cols].index]
     return render_template("about.html", tables = [websitedata.to_html(classes='data')])
 
-@app.route('/5min/')
+@application.route('/5min/')
 def lowtimeframe():
     cols2 = (ltf.iloc[-3:] != 0).any()
     websitedata2 = ltf.iloc[-3:][cols2[cols2].index]
     return render_template("lowtimeframe.html", tables2 = [websitedata2.to_html(classes='data')])
 
 if __name__ == '__main__':
-    app.run()
+    application.run()

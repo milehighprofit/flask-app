@@ -28,4 +28,4 @@ def lowtimeframe():
     return render_template("lowtimeframe.html", tables2 = [websitedata2.to_html(classes='data')])
 
 if __name__ == '__main__':
-    application.run()
+    application.run(debug=False)

@@ -65,7 +65,7 @@ closes = nameless.loc[:,nameless.columns.get_level_values(0).isin(['close'])]
 def divs(closes, columns, ob=50, os=50, period=14):
     """Calculates bullish and bearish RSI divergences under oversold or overbought conditions"""
 
-    closes['RSI'] = talib.RSI(closes.iloc[:, columns])
+    closes['RSI'] = get_rsi(closes.iloc[:, columns], 14)
     closes['rolling_rsi_high'] = closes['RSI'].rolling(period).max()
     closes['rolling_rsi_low'] = closes['RSI'].rolling(period).min()
     closes['rolling_closing_high'] = closes.iloc[:, columns].rolling(period).max()
@@ -93,4 +93,4 @@ htf = pd.concat(dict(zip(perpnames,rsidata)), axis=1)
 cols = (htf.iloc[-3:] != 0).any()
 websitedata = htf.iloc[-3:][cols[cols].index]
 
-print(htf)
+print(websitedata)
